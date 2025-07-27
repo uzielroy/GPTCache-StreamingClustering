@@ -64,6 +64,16 @@ Example:
 
 ---
 
+### 🗂️ Synthetic Benchmark Outputs (`benchmark_clustering_speedup.py`)
+
+| File / Folder | What it contains |
+|---------------|------------------|
+| **`results_summary.csv`** | Master spreadsheet with one row per `(per_cluster, n_clusters, τ, α)` configuration. Columns include: baseline and clustered latency statistics (`flat_mean_us`, `cluster_median_us`, `cluster_p95_us` …), hit‑rate, inter/intra latency means, and speed‑up ratios. |
+| **`plots/`** | All visualisations are written here.<br><br>• **`cdf_pc*_nc*_tau*_alpha*.png`** – Empirical CDF of per‑request latencies for that configuration (flat vs. clustered).<br>• **`hitrate_pc*_nc*_tau*_alpha*.png`** – Cumulative cache hit‑rate curve for the same configuration.<br>• **`breakdown_pc*_nc*_tau*_alpha*.png`** – Bar chart comparing *inter‑cluster* vs. *intra‑cluster* mean latencies.<br>• **`ablation_latency_vs_tau.png`** – Line plot: clustered mean latency vs τ for each α value.<br>• **`ablation_hitrate_vs_tau.png`** – Line plot: hit‑rate vs τ for each α value.<br>• **`ablation_latency_vs_alpha.png`** – Line plot: clustered mean latency vs α for each τ value.<br>• **`ablation_hitrate_vs_alpha.png`** – Line plot: hit‑rate vs α for each τ value. |
+| **Console stdout** | For every sweep combination the script prints: <br>• Progress bars for insertion and look‑ups.<br>• Per‑run dictionary of latency stats and hit‑rate.<br>• A final **SUMMARY TABLE** listing all configurations with baseline/clustered latencies, hit‑rate, and speed‑up. <br>Redirect stdout to a file if you wish to keep it: <br>`python benchmark_clustering_speedup.py ... > synthetic_bench.log` |
+
+
+
 ## 📈 Real‑Data Benchmark – `gptcache_benchmark.py`
 
 | Argument            | Description                                    | Default                      |
