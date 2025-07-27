@@ -56,6 +56,7 @@ The result: **lower cache‑lookup latency** and **higher throughput** for LLM�
 
 Example:
 ---
+
 python benchmark_clustering_speedup.py \
   --n_clusters_list 500 1000 \
   --per_cluster_list 50 100 \
@@ -64,6 +65,7 @@ python benchmark_clustering_speedup.py \
   --dim 128 \
   --n_queries 3000 \
   --seed 42
+  
 ---
 
 ### 🗂️ Synthetic Benchmark Outputs (`benchmark_clustering_speedup.py`)
