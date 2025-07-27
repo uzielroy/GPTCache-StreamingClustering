@@ -5,7 +5,7 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-yellow.svg)](https://www.python.org/)
 [![Conda Environment](https://img.shields.io/badge/Conda-env.yaml-success)](env.yaml)
 
-> **“GPTCache Streaming Clustering”** — a streaming‑clustering cache policy for LLM embeddings built on top of [GPTCache](https://github.com/zilliztech/GPTCache).
+> **“GPTCache Streaming Clustering”** - a streaming‑clustering cache policy for LLM embeddings built on top of [GPTCache](https://github.com/zilliztech/GPTCache).
 
 ---
 
@@ -103,4 +103,16 @@ Clustered‑cache example:
     benchmark_summary.csv                # Aggregated summary across runs
 
 ---
+
+### 🗂️ Output File Descriptions
+
+| File | What it contains |
+|------|------------------|
+| **`requests.csv`** | One row per request. Columns: `latency_ms` (end‑to‑end latency), `hit` (1 = cache hit, 0 = miss), `gpu_mb` (GPU memory at request time), `ram_mb` (host RAM), plus sequential `idx`. |
+| **`latency_throughput_stats.txt`** | Plain‑text summary of latency statistics (`avg_latency`, `median_latency`, `p95`, `p99`) and overall throughput (`throughput_qps`), along with totals for `hits`, `misses`, and final accuracy/score. |
+| **`latency_cdf.png`** | Cumulative Distribution Function plot of per‑request latencies-quick visual insight into tail‑latency behaviour. |
+| **`hit_rate.png`** | Line chart of cumulative cache hit‑rate over time (only produced when caching is enabled). |
+| **`cluster_stats.txt`** | Final snapshot of clustering state: total clusters, non‑empty clusters, mean & max cluster size, plus a histogram of cluster sizes. A running log (`cluster_stats_progress.txt`) is also appended to during long runs. |
+| **`benchmark_summary.csv`** | Aggregated run‑level metrics-each row corresponds to a single run tag and includes model, workload, cache settings, accuracy, latency percentiles, throughput, memory usage, and clustering stats. |
+
 
